@@ -1,24 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Navbar, Container } from "react-bootstrap";
+import { Route, Switch,Link } from "react-router-dom";
+import "./App.css";
+
+import Dashboard from "./pages/dashboard"
+import SubDashboard from "./pages/SubDashboard";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container fluid>
+      <Navbar bg="light">
+        <Container>
+          <Navbar.Brand><Link to="/" style={{textDecoration:"none",color:"black"}}>Hello Dog!</Link></Navbar.Brand>
+        </Container>
+      </Navbar>
+      
+      <Switch>
+        <Route exact path="/">
+          <Dashboard />
+        </Route>
+        <Route path="/:dog">
+          <SubDashboard />
+        </Route>
+      </Switch>
+    </Container>
   );
 }
 
